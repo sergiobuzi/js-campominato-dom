@@ -15,6 +15,11 @@ sendButton.addEventListener("click",
 
     function(){
 
+        //genero un array di 16 numeri randomici
+        const newArrNum = genArrayRandomNum(1, 100, 16);
+        console.log(newArrNum);
+
+
 
         //DEBUG del pulsante play
         gridElement.innerHTML = "";
@@ -30,30 +35,18 @@ sendButton.addEventListener("click",
 
             square.addEventListener('click',            //aggiunge all elemento square l'evento click
                 function() {
-                    square.classList.add('active');       //al click aggiunge la classe active
-                    console.log("Hai selezionato la cella numero:", i);
+                    if(newArrNum === i) {
+                        newArrNum.classList.add("bomb");               
+                        console.log("Hai selezionato una bomba",newArrNum);
+                    } else {
+                        square.classList.add('active');       //al click aggiunge la classe active
+                        console.log("Hai selezionato la cella numero:", i);
+                    } 
                 }
-            );  
-
-            
-            //creo un ciclo che mi dia come risultato 16 numeri random da 1 a 100
-            const newArrNum = genArrayRandomNum(1, 100, 16);
-            console.log(newArrNum);
-            
-
-            //Condizione: se un numero generato dal ciclo randomico e uguale a un numero della tabella allora aggiungo la classe bomb
-            if(newArrNum === square) {
-                newArrNum.classList.add("bomb");               
-                console.log(newArrNum);
-            }          
-
-
+            );      
         }
     }
 );
-
-
-
 
 
 

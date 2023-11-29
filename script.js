@@ -15,15 +15,12 @@ sendButton.addEventListener("click",
 
     function(){
 
-        //genero un array di 16 numeri randomici
+        //genero un array di 16 numeri randomici (le bombe)
         const newArrNum = genArrayRandomNum(1, 100, 16);
         console.log(newArrNum);
 
-
-
         //DEBUG del pulsante play
         gridElement.innerHTML = "";
-
 
         for (let i = 1; i <= 100; i++) {    //avvio il ciclo che mi genera 100 div
 
@@ -33,17 +30,19 @@ sendButton.addEventListener("click",
             square.append(i);                           //inserisce dentro square il numero relativo a se stesso
             
 
-            square.addEventListener('click',            //aggiunge all elemento square l'evento click
+            square.addEventListener('click',         //aggiunge all elemento square l'evento click
                 function() {
-                    if(newArrNum === i) {
-                        newArrNum.classList.add("bomb");               
-                        console.log("Hai selezionato una bomba",newArrNum);
-                    } else {
+                    if(newArrNum.includes(i)) {             //SE un numero del contatore è incluso nell'array allora:
+                        square.classList.add("bomb");           //square prende la classe bomb     
+                        console.log("Hai preso la bomba",square);           //stampo che ho perso e faccio uscire un alert
+                        alert("hai perso");
+                    } else {                          //ALTRIMENTI se il numero non è contenuto nell'array allora
                         square.classList.add('active');       //al click aggiunge la classe active
                         console.log("Hai selezionato la cella numero:", i);
                     } 
                 }
-            );      
+            );  
+                
         }
     }
 );

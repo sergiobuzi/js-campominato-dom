@@ -38,6 +38,7 @@ sendButton.addEventListener("click",
             
             //creo un ciclo che mi dia come risultato 16 numeri random da 1 a 100
             const newArrNum = genArrayRandomNum(1, 100, 16);
+            console.log(newArrNum);
             
 
             //Condizione: se un numero generato dal ciclo randomico e uguale a un numero della tabella allora aggiungo la classe bomb
@@ -73,7 +74,7 @@ function genArrayRandomNum(minNum, maxNum, lunghezzaArr) {
     //genera un numero random in un range (min, max)
     let newNumber = getRandomNumMinMax (minNum, maxNum);
     //se il numero  generato e presente nell'array
-    if (arrayToGen.includes(newNumber)) {
+    if (!arrayToGen.includes(newNumber)) {
         //allora lo pusho nell'array
         arrayToGen.push(newNumber);
     }
